@@ -98,6 +98,14 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		CD694B75210D66E900452B3B /* WebView */ = {
+			isa = PBXGroup;
+			children = (
+				CDE579A6210CBAAC008A6C0E /* WebViewController.swift */,
+			);
+			path = WebView;
+			sourceTree = "<group>";
+		};
 		CDE5795B210A9439008A6C0E = {
 			isa = PBXGroup;
 			children = (
@@ -143,9 +151,9 @@
 		CDE5797D210A974A008A6C0E /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				CD694B75210D66E900452B3B /* WebView */,
 				CDE57992210BCC25008A6C0E /* PullRequest */,
 				CDE5797E210A9750008A6C0E /* Home */,
-				CDE579A6210CBAAC008A6C0E /* WebViewController.swift */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";

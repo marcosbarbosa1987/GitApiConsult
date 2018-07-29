@@ -1,2 +1,2 @@
 # GitConsultApi
-This project will show Swift repositories in GitHub
+This project will show Swift repositories in GitHub.

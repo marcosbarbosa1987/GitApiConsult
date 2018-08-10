@@ -44,11 +44,20 @@ class HomeController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        UIApplication.shared.statusBarStyle = .lightContent
         view.addSubview(tableHome)
         
         self.navigationController?.navigationBar.barTintColor = UIColor(red: 37/255, green: 40/255, blue: 47/255, alpha: 1)
         self.navigationController?.navigationBar.tintColor = UIColor.white
-        UIApplication.shared.statusBarStyle = .lightContent
+        
+        let addButton = UIBarButtonItem(image: #imageLiteral(resourceName: "baseline_search_white_18dp"), style:.plain, target:self, action: #selector(buttonAction(_:)))
+        addButton.tintColor = UIColor.white
+        self.navigationItem.rightBarButtonItem = addButton
+        
+    }
+    
+    @objc func buttonAction(_ sender: UIBarButtonItem) {
+        
     }
     
     override func viewDidLoad() {

@@ -32,6 +32,7 @@
 		CDE579A5210CA6EC008A6C0E /* PullRequestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE579A4210CA6EC008A6C0E /* PullRequestCell.swift */; };
 		CDE579A7210CBAAC008A6C0E /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE579A6210CBAAC008A6C0E /* WebViewController.swift */; };
 		CDE579AE210D51A9008A6C0E /* UIViewController+alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE579AD210D51A9008A6C0E /* UIViewController+alert.swift */; };
+		CDE94AFA211D427B003308FE /* Languages.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE94AF9211D427B003308FE /* Languages.swift */; };
 		EA5578E5E63EE58269906947 /* Pods_GitTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA4B5D0DEF0D853E6B1EAFD2 /* Pods_GitTest.framework */; };
 /* End PBXBuildFile section */
 
@@ -65,6 +66,7 @@
 		CDE579A4210CA6EC008A6C0E /* PullRequestCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullRequestCell.swift; sourceTree = "<group>"; };
 		CDE579A6210CBAAC008A6C0E /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		CDE579AD210D51A9008A6C0E /* UIViewController+alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+alert.swift"; sourceTree = "<group>"; };
+		CDE94AF9211D427B003308FE /* Languages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Languages.swift; sourceTree = "<group>"; };
 		DA4B5D0DEF0D853E6B1EAFD2 /* Pods_GitTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GitTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3607CCAB6ED755D8795D574 /* Pods-GitTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitTest.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GitTest/Pods-GitTest.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -178,6 +180,7 @@
 			children = (
 				CDE57980210A9907008A6C0E /* Repository.swift */,
 				CDE57997210BD038008A6C0E /* PullRequest.swift */,
+				CDE94AF9211D427B003308FE /* Languages.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -334,6 +337,7 @@
 				CDE5798B210AA7DD008A6C0E /* HomePresenter.swift in Sources */,
 				CDE57996210BCD78008A6C0E /* PullRequestWorker.swift in Sources */,
 				CDE579A5210CA6EC008A6C0E /* PullRequestCell.swift in Sources */,
+				CDE94AFA211D427B003308FE /* Languages.swift in Sources */,
 				CDE5798F210AABEB008A6C0E /* HomeConfigurator.swift in Sources */,
 				CDE57985210AA2D2008A6C0E /* RestAPIManager.swift in Sources */,
 				CDE57981210A9907008A6C0E /* Repository.swift in Sources */,

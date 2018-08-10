@@ -38,6 +38,9 @@ class HomeController: UIViewController {
     
     var textFieldLanguage: UITextField = {
         var textField = UITextField()
+        textField.layer.cornerRadius = 8
+        textField.layer.borderColor = UIColor.black.cgColor
+        textField.layer.borderWidth = 0.6
         textField.backgroundColor = UIColor.white
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
@@ -47,6 +50,10 @@ class HomeController: UIViewController {
         var button = UIButton()
         button.backgroundColor = #colorLiteral(red: 0, green: 0.5603182912, blue: 0, alpha: 1)
         button.layer.cornerRadius = 8
+        button.layer.shadowColor = UIColor.black.cgColor
+        button.layer.shadowRadius = 4
+        button.layer.shadowOpacity = 1.0
+        button.layer.shadowOffset = CGSize(width: 0, height: 0)
         button.setTitle("Buscar", for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -70,11 +77,6 @@ class HomeController: UIViewController {
         super.viewWillAppear(animated)
         
         UIApplication.shared.statusBarStyle = .lightContent
-        view.addSubview(viewSearch)
-        viewSearch.addSubview(textFieldLanguage)
-        viewSearch.addSubview(buttonSearch)
-        configureView()
-        view.addSubview(tableHome)
         
         self.navigationController?.navigationBar.barTintColor = UIColor(red: 37/255, green: 40/255, blue: 47/255, alpha: 1)
         self.navigationController?.navigationBar.tintColor = UIColor.white
@@ -106,6 +108,13 @@ class HomeController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        view.addSubview(viewSearch)
+        viewSearch.addSubview(textFieldLanguage)
+        viewSearch.addSubview(buttonSearch)
+        view.addSubview(tableHome)
+        configureView()
+        
         
         awakeFromNib()
         loading = alertWaiting(descricao: "Aguarde...")

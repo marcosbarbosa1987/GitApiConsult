@@ -35,6 +35,10 @@ class HomeCell: UITableViewCell {
     
     var imagemRep: UIImageView = {
         var imageView = UIImageView()
+        imageView.layer.shadowOffset = CGSize(width: 3, height: -2)
+        imageView.layer.shadowOpacity = 0.8
+        imageView.layer.shadowRadius = 5
+        imageView.layer.shadowColor = UIColor.black.cgColor
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFit
         return imageView

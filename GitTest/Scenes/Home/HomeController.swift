@@ -28,6 +28,7 @@ class HomeController: UIViewController {
     var loading: UIViewController!
     var heightConstraint: NSLayoutConstraint!
     var booleanHeightSearch = false
+    var pickerLanguage: UIPickerView!
     
     var viewSearch: UIView = {
         var view = UIView()
@@ -80,6 +81,8 @@ class HomeController: UIViewController {
         
         self.navigationController?.navigationBar.barTintColor = UIColor(red: 37/255, green: 40/255, blue: 47/255, alpha: 1)
         self.navigationController?.navigationBar.tintColor = UIColor.white
+        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor : UIColor.white,
+                                                            .font : UIFont.init(name: "AvenirNext-DemiBold", size: 22.0)!]
         
         let addButton = UIBarButtonItem(image: #imageLiteral(resourceName: "baseline_search_white_18dp"), style:.plain, target:self, action: #selector(buttonAction))
         addButton.tintColor = UIColor.white
@@ -115,10 +118,20 @@ class HomeController: UIViewController {
         view.addSubview(tableHome)
         configureView()
         
+        if LANGUAGES.count > 0 {
+            textFieldLanguage.text = LANGUAGES.first
+        }
         
         awakeFromNib()
         loading = alertWaiting(descricao: "Aguarde...")
-        output.fetchItems(request: HomeModels.Fetch.Request(url: "https://api.github.com/search/repositories?q=language:Swift&sort=stars&page=\(page)"))
+        
+        if let language = textFieldLanguage.text {
+            
+            self.navigationController?.navigationBar.topItem?.title = language
+            
+            output.fetchItems(request: HomeModels.Fetch.Request(url: "https://api.github.com/search/repositories?q=language:\(language)&sort=stars&page=\(page)"))
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -153,10 +166,6 @@ class HomeController: UIViewController {
         print("error na busca")
         
     }
-  
-}
-
-extension HomeController: UITableViewDelegate, UITableViewDataSource{
     
     func configureView(){
         
@@ -171,11 +180,17 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource{
         buttonSearch.trailingAnchor.constraint(equalTo: viewSearch.trailingAnchor, constant: -16).isActive = true
         buttonSearch.widthAnchor.constraint(equalToConstant: 100).isActive = true
         buttonSearch.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        buttonSearch.addTarget(self, action: #selector(searchLanguage(_:)), for: .touchUpInside)
         
         textFieldLanguage.topAnchor.constraint(equalTo: viewSearch.topAnchor, constant: 10).isActive = true
         textFieldLanguage.leadingAnchor.constraint(equalTo: viewSearch.leadingAnchor, constant: 16).isActive = true
         textFieldLanguage.trailingAnchor.constraint(equalTo: buttonSearch.leadingAnchor, constant: -16).isActive = true
         textFieldLanguage.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        
+        pickerLanguage = UIPickerView()
+        pickerLanguage.delegate = self
+        pickerLanguage.dataSource = self
+        textFieldLanguage.inputView = pickerLanguage
         
     }
     
@@ -191,6 +206,23 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource{
         tableHome.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
         
     }
+    
+    @objc internal func dismissKeyboard(){
+        view.endEditing(true)
+    }
+  
+    @objc internal func searchLanguage(_ sender: UIButton){
+        dismissKeyboard()
+        if let language = textFieldLanguage.text {
+            repositories = [Repository]()
+            self.navigationController?.navigationBar.topItem?.title = language
+            output.fetchItems(request: HomeModels.Fetch.Request(url: "https://api.github.com/search/repositories?q=language:\(language)&sort=stars&page=\(page)"))
+        }
+    }
+    
+}
+
+extension HomeController: UITableViewDelegate, UITableViewDataSource{
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -238,7 +270,31 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource{
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         if booleanHeightSearch{
             buttonAction()
+            dismissKeyboard()
         }
+    }
+    
+}
+
+extension HomeController: UIPickerViewDelegate, UIPickerViewDataSource{
+  
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return LANGUAGES.count
+    }
+    
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        
+        return LANGUAGES[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        textFieldLanguage.text = LANGUAGES[row]
     }
     
 }

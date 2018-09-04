@@ -80,6 +80,7 @@ class HomeController: UIViewController {
         
         self.navigationController?.navigationBar.barTintColor = UIColor(red: 37/255, green: 40/255, blue: 47/255, alpha: 1)
         self.navigationController?.navigationBar.tintColor = UIColor.white
+        UINavigationBar.appearance().tintColor = UIColor.white
         
         let addButton = UIBarButtonItem(image: #imageLiteral(resourceName: "baseline_search_white_18dp"), style:.plain, target:self, action: #selector(buttonAction))
         addButton.tintColor = UIColor.white

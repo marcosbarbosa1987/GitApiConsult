@@ -32,7 +32,7 @@ class HomeController: UIViewController {
     
     var viewSearch: UIView = {
         var view = UIView()
-        view.layer.backgroundColor = UIColor.red.cgColor
+        view.layer.backgroundColor = UIColor(red: 37/255, green: 40/255, blue: 47/255, alpha: 1).cgColor
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -43,6 +43,7 @@ class HomeController: UIViewController {
         textField.layer.borderColor = UIColor.black.cgColor
         textField.layer.borderWidth = 0.6
         textField.backgroundColor = UIColor.white
+        textField.textAlignment = .center
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
@@ -81,12 +82,7 @@ class HomeController: UIViewController {
         
         self.navigationController?.navigationBar.barTintColor = UIColor(red: 37/255, green: 40/255, blue: 47/255, alpha: 1)
         self.navigationController?.navigationBar.tintColor = UIColor.white
-//<<<<<<< HEAD
-        UINavigationBar.appearance().tintColor = UIColor.white
-//=======
-//        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor : UIColor.white,
-//                                                            .font : UIFont.init(name: "AvenirNext-DemiBold", size: 22.0)!]
-//>>>>>>> b24216d249eaa50d63938a03613440834f0a235b
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor:UIColor.white, NSAttributedStringKey.font : UIFont.boldSystemFont(ofSize: 16), NSAttributedStringKey.kern:1.5]
         
         let addButton = UIBarButtonItem(image: #imageLiteral(resourceName: "baseline_search_white_18dp"), style:.plain, target:self, action: #selector(buttonAction))
         addButton.tintColor = UIColor.white
